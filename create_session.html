@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Labor</title>
+    <style>
+
+        header {
+            background-color: #666;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+        .mein-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2ea44f; /* GitHub Gr�n */
+            color: white; /* Schriftfarbe */
+            text-decoration: none; /* Unterstrich entfernen */
+            border-radius: 6px; /* Abgerundete Ecken */
+            font-weight: bold;
+            font-family: sans-serif;
+            transition: background-color 0.2s; /* Weicher �bergang beim Hover */
+        }
+
+            .mein-button:hover {
+                background-color: #2c974b; /* Etwas dunkleres Gr�n wenn man mit der Maus dr�ber f�hrt */
+            }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h2>Social Media Labor</h2>
+        <h4>Lehrkr�fte Login</h4>
+        <div id="auth-status-container" style="position: absolute; top: 20px; right: 20px; font-size: 14px; text-align: right;
+         background-color: #323940; color: white;"></div>
+    </header>
+    <div class="login">
+        <div id="login-container">
+            <!-- Bereich f�r Fehlermeldungen (zun�chst unsichtbar) -->
+            <p id="sessionCodeContainer" style="color: black; display: none;"></p>
+
+            <!-- Der Button, der das JavaScript ausl�st -->
+            <button id="generateSessionCodeButton">Labor betreten</button>
+
+            <!-- Bereich f�r Fehlermeldungen (zun�chst unsichtbar) -->
+            <p id="errorMessage" style="color: red; display: none;">Fehler bei der Code-Erstellung.</p>
+        </div>
+
+        <!-- Hier binden wir das JavaScript ein -->
+        <script type="module" src="generate_session_code.js"></script>
+    </div>
+    <script type="module" src="auth-status.js"></script>
+
+
+</body>
+</html>
