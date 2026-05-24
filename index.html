@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoppla! Das war ein Test.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .warning-box {
+            background-color: #e74c3c;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 600px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .info {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
 
+    <!-- HIER KOMMT IHR GOATCOUNTER SCRIPT REIN -->
+    <!-- Beispiel: <script data-goatcounter="https://IHR_NAME.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+</head>
+<body>
+
+    <div class="warning-box">
+        <h1>🚨 Hoppla! Du wurdest "gefischt"! 🚨</h1>
+        <p>Dies war eine simulierte Phishing-Attacke der Informatik-AG.</p>
+        <p><b>Keine Sorge:</b> Dein Passwort wurde <u>nicht</u> gespeichert und hat deinen Computer nie verlassen. Das Anmelde-Feld war eine reine Attrappe.</p>
+        
+        <div class="info">
+            <h3>Was wäre passiert, wenn das ein echter Angriff wäre?</h3>
+            <p>Hättest du eben auf einer echten Hacker-Seite deine Daten eingegeben, hätten die Angreifer jetzt dein Schul-Passwort gestohlen.</p>
+            
+            <h3>Woran hättest du es erkennen können?</h3>
+            <ul>
+                <li><b>Die Internetadresse (URL):</b> Schau mal oben in die Adresszeile! Da steht nicht die echte Schul-Adresse, sondern <i>github.io</i>.</li>
+                <li><b>Der Absender der Mail:</b> War das wirklich die Schulleitung?</li>
+            </ul>
+        </div>
+        
+        <p id="jahrgang-info"></p>
+    </div>
+
+    <script>
+        // Kleines Extra: Wir lesen den Jahrgang wieder aus und zeigen ihn an (Optional)
+        const urlParams = new URLSearchParams(window.location.search);
+        const jahrgang = urlParams.get('jg');
+
+        if (jahrgang) {
+            document.getElementById('jahrgang-info').innerHTML = 
+                "<small><i>(Info für die AG: Dieser Klick wurde für Jahrgang " + jahrgang + " anonym in der Statistik gezählt.)</i></small>";
+        }
+    </script>
+
+</body>
+</html>
