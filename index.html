@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoppla! Das war ein Test.</title>
+    <title>Social Media Labor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,50 +23,54 @@
         h1 {
             margin-top: 0;
         }
-        .info {
+        .login {
             background-color: white;
             color: black;
             padding: 20px;
             border-radius: 5px;
             text-align: left;
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        header {
+            background-color: #666;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
         }
     </style>
 
-    <!-- HIER KOMMT IHR GOATCOUNTER SCRIPT REIN -->
-    <!-- Beispiel: <script data-goatcounter="https://IHR_NAME.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
 </head>
 <body>
+    <header>
+        <h2>Social Media Labor</h2>
+    </header>
 
-    <div class="warning-box">
-        <h1>🚨 Hoppla! Du wurdest "gefischt"! 🚨</h1>
-        <p>Dies war eine simulierte Phishing-Attacke der Informatik-AG.</p>
-        <p><b>Keine Sorge:</b> Dein Passwort wurde <u>nicht</u> gespeichert und hat deinen Computer nie verlassen. Das Anmelde-Feld war eine reine Attrappe.</p>
-        
-        <div class="info">
-            <h3>Was wäre passiert, wenn das ein echter Angriff wäre?</h3>
-            <p>Hättest du eben auf einer echten Hacker-Seite deine Daten eingegeben, hätten die Angreifer jetzt dein Schul-Passwort gestohlen.</p>
-            
-            <h3>Woran hättest du es erkennen können?</h3>
-            <ul>
-                <li><b>Die Internetadresse (URL):</b> Schau mal oben in die Adresszeile! Da steht nicht die echte Schul-Adresse, sondern <i>github.io</i>.</li>
-                <li><b>Der Absender der Mail:</b> War das wirklich die Schulleitung?</li>
-            </ul>
-        </div>
-        
-        <p id="jahrgang-info"></p>
+    <div class="login">
+        <button>Lehrkräfte-Login</button>
     </div>
 
-    <script>
-        // Kleines Extra: Wir lesen den Jahrgang wieder aus und zeigen ihn an (Optional)
-        const urlParams = new URLSearchParams(window.location.search);
-        const jahrgang = urlParams.get('jg');
+    <div class="login">
+        <div id="login-container">
+            <h1>Willkommen im Social Media Labor</h1>
+            <p>Bitte gib deinen Session-Code ein, um zu starten.</p>
 
-        if (jahrgang) {
-            document.getElementById('jahrgang-info').innerHTML = 
-                "<small><i>(Info für die AG: Dieser Klick wurde für Jahrgang " + jahrgang + " anonym in der Statistik gezählt.)</i></small>";
-        }
-    </script>
+            <!-- Das Eingabefeld -->
+            <input type="text" id="sessionCodeInput" placeholder="Z.B. A7F3-X9">
+
+            <!-- Der Button, der das JavaScript auslöst -->
+            <button id="joinButton">Labor betreten</button>
+
+            <!-- Bereich für Fehlermeldungen (zunächst unsichtbar) -->
+            <p id="errorMessage" style="color: red; display: none;">Falscher Code, bitte nochmal versuchen.</p>
+        </div>
+
+        <!-- Hier binden wir das JavaScript ein -->
+        <script src="login.js"></script>
+    </div>
 
 </body>
 </html>
