@@ -3,102 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supabase Login & Registrierung</title>
+    <title>Lehrkräfte Login - Social Media Labor</title>
     <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --primary-blue: #1877f2;
+            --primary-blue-hover: #166fe5;
+            --success-green: #42b72a;
+            --success-green-hover: #36a420;
+            --text-dark: #050505;
+            --text-muted: #65676b;
+            --border-color: #ced0d4;
+            --error-red: #dc2626;
+            --error-bg: #fef2f2;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
+        /* Header mit integriertem Home-Button */
+        header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 20px;
+            color: white;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            header h2 {
+                margin: 0;
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+        .home-btn {
+            position: absolute;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+            .home-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .home-btn img {
+                width: 20px;
+                height: auto;
+                filter: brightness(0) invert(1); /* Macht das Bild weiß, falls es schwarz ist */
+            }
+
+        /* Zentrierter Container */
+        .main-container {
+            max-width: 420px;
+            margin: 60px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Karten-Design */
+        .card {
             background: white;
-            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        h2 {
+            padding: 30px 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
             text-align: center;
         }
 
+            .card h2 {
+                margin-top: 0;
+                margin-bottom: 25px;
+                font-size: 22px;
+                color: var(--text-dark);
+            }
+
+        /* Formular-Elemente */
         .form-group {
             margin-bottom: 15px;
+            text-align: left;
         }
+
+            .form-group label {
+                display: block;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--text-dark);
+                margin-bottom: 6px;
+            }
 
         input {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 15px;
             box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            transition: all 0.2s ease;
         }
 
+            input:focus {
+                outline: none;
+                border-color: var(--primary-blue);
+                box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+            }
+
+        /* Buttons */
         button {
             width: 100%;
-            padding: 10px;
-            margin-top: 10px;
+            padding: 12px;
             border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            color: white;
+            border-radius: 6px;
+            font-size: 16px;
             font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            color: white;
+            margin-top: 10px;
         }
 
         #btnLogin {
-            background-color: #3b82f6;
+            background-color: var(--primary-blue);
+        }
+
+            #btnLogin:hover {
+                background-color: var(--primary-blue-hover);
+            }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 20px 0;
         }
 
         #btnRegister {
-            background-color: #10b981;
+            background-color: var(--success-green);
+            width: 80%; /* Etwas schmaler um es als sekundäre Aktion zu markieren */
+            margin: 0 auto;
+            display: block;
         }
+
+            #btnRegister:hover {
+                background-color: var(--success-green-hover);
+            }
 
         #btnLogout {
             background-color: #ef4444;
         }
 
+            #btnLogout:hover {
+                background-color: #dc2626;
+            }
+
+        /* Nachrichten (Fehler/Erfolg) */
         #message {
-            margin-top: 15px;
+            margin-top: 20px;
             text-align: center;
             font-size: 14px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 500;
         }
 
+            #message:empty {
+                display: none;
+            }
+
         .error {
-            color: red;
+            background-color: var(--error-bg);
+            color: var(--error-red);
+            border: 1px solid #fecaca;
         }
 
         .success {
-            color: green;
+            background-color: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
         }
 
-        /* Versteckt Elemente standardm��ig */
+        /* Versteckt Elemente standardmäßig (wird von JS genutzt) */
         .hidden {
-            display: none;
+            display: none !important;
         }
     </style>
 </head>
 <body>
-    
-    <div class="container">
-        <!-- Bereich f�r Login und Registrierung -->
-        <div id="auth-section">
-            <h2>Login / Registrierung</h2>
-            <div class="form-group">
-                <label for="email">E-Mail</label>
-                <input type="email" id="email" placeholder="beispiel@mail.com" required>
+
+    <header>
+        <!-- Home-Button im Header integriert -->
+        <a href="index.html" class="home-btn" title="Zurück zur Startseite">
+            <img src="img/home.png" alt="Home"> Zurück
+        </a>
+        <h2>Lehrkräfte-Bereich</h2>
+    </header>
+
+    <div class="main-container">
+
+        <div class="card">
+            <!-- Bereich für Login und Registrierung -->
+            <div id="auth-section">
+                <h2>Login / Registrierung</h2>
+
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" placeholder="beispiel@schule.de" required autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input type="password" id="password" placeholder="Min. 6 Zeichen" required autocomplete="current-password">
+                </div>
+
+                <button id="btnLogin">Einloggen</button>
+
+                <div class="divider"></div>
+
+                <button id="btnRegister">Neues Konto erstellen</button>
             </div>
-            <div class="form-group">
-                <label for="password">Passwort</label>
-                <input type="password" id="password" placeholder="Min. 6 Zeichen" required>
-            </div>
-            <button id="btnLogin">Einloggen</button>
-            <button id="btnRegister">Registrieren</button>
+
+            <!-- Nachrichten (Fehler/Erfolg) -->
+            <div id="message"></div>
         </div>
-        <!-- Nachrichten (Fehler/Erfolg) -->
-        <div id="message"></div>
+
     </div>
 
     <!-- Einbinden der JavaScript-Datei (als Modul, wegen Supabase) -->

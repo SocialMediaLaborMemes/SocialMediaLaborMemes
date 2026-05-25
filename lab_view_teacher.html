@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labor Live - Lehrkräfteansicht</title>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --primary-blue: #1877f2;
+            --text-dark: #050505;
+            --text-muted: #65676b;
+            --border-color: #ced0d4;
+            --error-red: #dc2626;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ========================================= */
+        /* HEADER MIT HOME-BUTTON                    */
+        /* ========================================= */
+        header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 20px;
+            color: white;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            header h2 {
+                margin: 0 0 5px 0;
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            header h4 {
+                margin: 0;
+                font-size: 15px;
+                font-weight: 300;
+                color: #cbd5e1;
+            }
+
+        .home-btn {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+            .home-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .home-btn img {
+                width: 20px;
+                height: auto;
+                filter: brightness(0) invert(1);
+            }
+
+        /* ========================================= */
+        /* HAUPTBEREICH (CARD)                       */
+        /* ========================================= */
+        .main-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 40px 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        /* Pulsierender "Live"-Punkt */
+        .live-indicator {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background-color: var(--error-red);
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+            }
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fef2f2;
+            color: var(--error-red);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #fecaca;
+            margin-bottom: 25px;
+        }
+
+        /* Die Nachrichten-Box (ID darf nicht verändert werden!) */
+        #greetingMessage {
+            margin: 0;
+            font-size: 20px;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .sub-text {
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="home-btn" title="Zurück zur Startseite">
+            <img src="img/home.png" alt="Home"> Zurück
+        </a>
+        <h2>Social Media Labor</h2>
+        <h4>Lehrkräfteansicht – Live-Kontrolle</h4>
+    </header>
+
+    <div class="main-container" id="login-container">
+
+        <div class="card">
+            <!-- Pulsierendes "Live"-Badge -->
+            <div class="status-badge">
+                <span class="live-indicator"></span> Labor ist aktiv
+            </div>
+
+            <!-- Hier wird dein JS den Text später reinladen -->
+            <h3 id="greetingMessage">Daten werden aufgezeichnet... Bitte warten.</h3>
+
+            <p class="sub-text">Die Schüler:innen bearbeiten gerade den Feed. Hier erscheinen gleich weitere Informationen zur aktuellen Session.</p>
+        </div>
+
+    </div>
+
+    <!-- Script für die Live-Session -->
+    <script type="module" src="start_lab_session.js"></script>
+
+</body>
+</html>

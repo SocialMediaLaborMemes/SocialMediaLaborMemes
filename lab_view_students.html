@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Labor - Feed</title>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --primary-blue: #1877f2;
+            --text-dark: #050505;
+            --text-muted: #65676b;
+            --border-color: #ced0d4;
+            --virality-bg: #fffbeb;
+            --virality-text: #b45309;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 15px 20px;
+            text-align: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+            header h2 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+            header h4 {
+                margin: 5px 0 0 0;
+                font-weight: 300;
+                font-size: 14px;
+                color: #cbd5e1;
+            }
+
+        .feed-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .user-status {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+            .user-status h3 {
+                margin: 0;
+                font-size: 16px;
+                color: var(--text-dark);
+            }
+
+            .user-status span {
+                color: var(--primary-blue);
+                font-weight: bold;
+            }
+
+        /* ========================================= */
+        /* STYLING FÜR DIE MEME-POSTS                */
+        /* ========================================= */
+        .post-card {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e4e6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .post-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-author {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .post-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            background-color: #000;
+        }
+
+        /* NEU: Viralitätsscore */
+        .virality-bar {
+            background-color: var(--virality-bg);
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+            color: var(--virality-text);
+        }
+
+            .virality-bar .score-badge {
+                background: #f59e0b;
+                color: white;
+                padding: 2px 10px;
+                border-radius: 12px;
+                font-size: 13px;
+                font-weight: bold;
+            }
+
+        /* Interaktions-Leiste */
+        .post-actions {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 15px;
+        }
+
+        .action-row-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e4e6eb;
+        }
+
+        .vote-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: #f0f2f5;
+            border: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+            .action-btn:hover {
+                background-color: #e4e6eb;
+            }
+
+        .btn-report {
+            background: none;
+            color: #dc2626;
+        }
+
+            .btn-report:hover {
+                background-color: #fee2e2;
+            }
+
+        /* NEU: Reaktions-Bereich statt Kommentare */
+        .reactions-section {
+            padding-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .reactions-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .reactions-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap; /* Bricht um, falls es auf dem Handy zu eng wird */
+        }
+
+        .reaction-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dark);
+        }
+
+            .reaction-btn:hover {
+                background: #f0f2f5;
+                border-color: var(--text-muted);
+            }
+
+            .reaction-btn.active {
+                background: #e6f2ff;
+                border-color: var(--primary-blue);
+                color: var(--primary-blue);
+            }
+        /* ========================================= */
+        /* ANIMATION FÜR DEN VIRALITÄTSSCORE         */
+        /* ========================================= */
+
+        @keyframes scorePop {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(245, 158, 11, 0);
+            }
+
+            40% {
+                transform: scale(1.3);
+                background-color: #d97706; /* Etwas dunkleres Orange */
+                box-shadow: 0 0 15px rgba(245, 158, 11, 0.8);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(245, 158, 11, 0);
+            }
+        }
+
+        /* Diese Klasse wird per JavaScript getriggert */
+        .score-badge.animate-update {
+            animation: scorePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Labor-Umgebung</h2>
+        <h4>Live-Feed aktiv  -  </h4> <h4 id="sessionCodeContainer">Lädt...</h4>
+    </header>
+
+    <div class="feed-container">
+
+        <div class="user-status">
+            <h3 id="greetingMessage">Du surfst anonym als: <span>Anonymes Alpaka</span></h3>
+        </div>
+
+        <!-- BEISPIEL MEME 1 -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="avatar">🦛</div>
+                <div class="post-info">
+                    <span class="post-author">Anonymes Nilpferd</span>
+                    <span class="post-time">Gerade eben</span>
+                </div>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Meme 1" class="post-image">
+
+            <!-- Viralitätsscore -->
+            <div class="virality-bar">
+                <span>📈 Aktueller Viralitätsscore</span>
+                <span class="score-badge" id="score-badge-1">42 / 100</span>
+            </div>
+
+            <div class="post-actions">
+                <!-- Like, Dislike & Melden -->
+                <div class="action-row-top">
+                    <div class="vote-group">
+                        <button class="action-btn">👍 Like</button>
+                        <button class="action-btn">👎 Dislike</button>
+                    </div>
+                    <button class="action-btn btn-report">🚩 Melden</button>
+                </div>
+
+                <!-- Reaktionen statt Freitext -->
+                <div class="reactions-section">
+                    <span class="reactions-label">Reagieren:</span>
+                    <div class="reactions-group">
+                        <button class="reaction-btn">😂 Witzig</button>
+                        <button class="reaction-btn">😡 Wütend</button>
+                        <button class="reaction-btn">🤔 Nachdenklich</button>
+                        <button class="reaction-btn">😢 Traurig</button>
+                        <button class="reaction-btn"> ⏭️ Überspringen </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BEISPIEL MEME 2 (Mit simulierten Klick-Zahlen) -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="avatar">🦊</div>
+                <div class="post-info">
+                    <span class="post-author">Anonymer Fuchs</span>
+                    <span class="post-time">Vor 2 Minuten</span>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1502809737437-1d85c70dd2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Meme 2" class="post-image">
+
+            <!-- Viralitätsscore -->
+            <div class="virality-bar" style="background-color: #fef2f2; color: #991b1b;">
+                <span>🔥 Hoher Viralitätsscore!</span>
+                <span class="score-badge" id="score-badge-2" style="background: #ef4444;">95 / 100</span>
+            </div>
+
+            <div class="post-actions">
+                <!-- Like, Dislike & Melden -->
+                <div class="action-row-top">
+                    <div class="vote-group">
+                        <button class="action-btn" style="color: var(--primary-blue);">👍 Like (124)</button>
+                        <button class="action-btn">👎 Dislike (3)</button>
+                    </div>
+                    <button class="action-btn btn-report">🚩 Melden</button>
+                </div>
+
+                <!-- Reaktionen statt Freitext -->
+                <div class="reactions-section">
+                    <span class="reactions-label">Bisherige Reaktionen:</span>
+                    <div class="reactions-group">
+                        <button class="reaction-btn active">😂 Witzig (45)</button>
+                        <button class="reaction-btn">😡 Wütend (2)</button>
+                        <button class="reaction-btn">🤔 Nachdenklich (12)</button>
+                        <button class="reaction-btn">🤯 Mindblown (8)</button>
+                        <button class="reaction-btn"> ⏭️ Überspringen </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Hier bleibt dein Supabase Listener aktiv -->
+    <script type="module" src="recieve_lab_session_updates.js"></script>
+    <script type="module" src="fill_lab_view_students.js"></script>
+    <script>
+        // Diese Funktion rufst du auf, wenn Supabase neue Daten liefert
+        function updateViralityScore(badgeId, newScore) {
+            const badge = document.getElementById(badgeId);
+
+            if (!badge) return;
+
+            // 1. Text aktualisieren
+            badge.innerText = newScore + " / 100";
+
+            // 2. Klasse entfernen (falls sie noch da ist)
+            badge.classList.remove('animate-update');
+
+            // 3. Magischer Trick: Reflow erzwingen, damit die Animation neustarten kann
+            void badge.offsetWidth;
+
+            // 4. Klasse wieder hinzufügen, um die Animation auszulösen
+            badge.classList.add('animate-update');
+        }
+
+        // --- NUR ZUM TESTEN FÜR DICH (Kannst du später löschen) ---
+        // Simuliert ein Update aus der Datenbank nach 3 Sekunden
+        setTimeout(() => {
+            updateViralityScore('score-badge-1', 48);
+        }, 3000);
+
+        setTimeout(() => {
+            updateViralityScore('score-badge-2', 98);
+        }, 5000);
+    </script>
+</body>
+</html>

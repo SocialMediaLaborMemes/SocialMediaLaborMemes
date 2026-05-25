@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Labor - Warteraum</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --bg-color: #f0f2f5;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+        }
+
+        /* Moderner Header */
+        header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+            header h2 {
+                margin: 0;
+                font-size: 28px;
+            }
+
+            header h4 {
+                margin: 5px 0 0 0;
+                font-weight: 300;
+                font-size: 16px;
+                color: #cbd5e1;
+            }
+
+        .home-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+            .home-icon:hover {
+                transform: translateY(-50%) scale(1.1);
+            }
+
+        /* Container im Card-Design */
+        #login-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        /* Code-Anzeige */
+        .code-box {
+            background-color: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: inline-block;
+            position: relative;
+        }
+
+        #sessionCodeContainer {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--primary-color);
+        }
+
+        .kopier-bild {
+            width: 24px;
+            cursor: pointer;
+            vertical-align: middle;
+            margin-left: 15px;
+            transition: opacity 0.2s;
+        }
+
+            .kopier-bild:hover {
+                opacity: 0.7;
+            }
+
+        #kopiertPopup {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            background-color: #10b981;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+            #kopiertPopup.sichtbar {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(-5px);
+            }
+
+        /* Wartestatus */
+        .waiting-status {
+            margin: 40px 0 30px 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e2e8f0;
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #greetingMessage {
+            color: var(--text-light);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        button {
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #leaveSessionBtn {
+            background-color: #ef4444;
+            color: white;
+            margin-top: 20px;
+        }
+
+            #leaveSessionBtn:hover {
+                background-color: #dc2626;
+            }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html">
+            <!-- Nutze hier dein eigenes Icon, wenn du magst -->
+            <img src="img/home.png" alt="Home" class="home-icon">
+        </a>
+        <h2>Social Media Labor</h2>
+        <h4>Warteraum für Schüler*innen</h4>
+    </header>
+
+    <div id="login-container">
+
+        <div style="color: var(--text-light); font-size: 16px;">Dein Sitzungscode lautet:</div>
+
+        <div class="code-box">
+            <span id="sessionCodeContainer">LÄDT...</span>
+            <img id="copyCodeButton" src="img/copy_icon.png" alt="Kopieren" class="kopier-bild">
+            <div id="kopiertPopup">Kopiert! ✓</div>
+        </div>
+
+        <div class="waiting-status">
+            <div class="spinner"></div>
+            <h3 id="greetingMessage">Du bist verbunden! Warte auf den Start durch die Lehrkraft...</h3>
+        </div>
+
+        <p id="errorMessage" style="color: red; display: none;">Fehler bei der Code-Erstellung.</p>
+
+        <button id="leaveSessionBtn">Labor verlassen</button>
+    </div>
+
+    <!-- Scripte -->
+    <script type="module" src="copy_session_code.js"></script>
+    <script type="module" src="start_session_lobby.js"></script>
+    <script type="module" src="catch_student_leaving.js"></script>
+    <script type="module" src="recieve_lab_session_updates.js"></script>
+</body>
+</html>

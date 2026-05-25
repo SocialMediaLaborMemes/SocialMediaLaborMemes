@@ -32,7 +32,10 @@ function generiereSitzungsCode(laenge) {
 document.addEventListener("DOMContentLoaded", () => {
 
     const button = document.getElementById("generateSessionCodeButton");
+    const codeContainerDescriptor = document.getElementById("sessionCodeContainerDescriptor");
     const codeContainer = document.getElementById("sessionCodeContainer");
+    const joinSessionButton = document.getElementById("joinSessionButton");
+    const copyCodeButton = document.getElementById("copyCodeButton");
     const errorMessage = document.getElementById("errorMessage");
 
     button.addEventListener("click", async () => {
@@ -70,8 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
             button.textContent = "Session Code generieren";
         } else {
             // Erfolg! Den Code auf der Webseite anzeigen
-            codeContainer.textContent = "Dein Sitzungscode: " + neuerCode;
+            codeContainer.textContent = neuerCode;
+            codeContainerDescriptor.style.display = "block";
             codeContainer.style.display = "block";
+            joinSessionButton.style.display = "block";
+            copyCodeButton.style.display = "block";
 
             // Den Button endgültig verstecken
             button.style.display = "none";
