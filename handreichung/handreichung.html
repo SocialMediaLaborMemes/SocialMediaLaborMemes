@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teil 1 - Handreichung: NS-Memes</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --sidebar-bg: #fffbe6;
+            --sidebar-border: #f1c40f;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        /* Grid für Hauptinhalt und Sidebar */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Styling der Sidebar / Anmerkungsfeld */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            border-left: 5px solid var(--sidebar-border);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .sidebar h4 {
+            margin-top: 0;
+            color: #d35400;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar ul {
+            padding-left: 15px;
+            margin-bottom: 0;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        @media (max-width: 850px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-left: none;
+                border-top: 5px solid var(--sidebar-border);
+                border-radius: 8px;
+            }
+            .card {
+                padding: 20px;
+            }
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Handreichung: Zwischen ‚Edgy Humor‘ und Revisionismus</h1>
+        <p><strong>NS-Memes im Geschichtsunterricht de-konstruieren</strong></p>
+    </header>
+
+    <section class="card">
+        <h2>Teil 1: Lehrkräftematerialien (Hintergrund, Lernziele & Verlaufsplan)</h2>
+
+        <!-- Flexbox/Grid Bereich für Einleitung und Sidebar -->
+        <div class="intro-grid">
+            <div class="main-content">
+                <h3>1. Ziele und didaktischer Rahmen</h3>
+                <p>Memes – zumeist flüchtige, digitale Bild-Text-Kombinationen, die bekannte Motive aufgreifen und durch Rekontextualisierung humorvoll oder provokant neu verpacken – sind zur „Lingua Franca“ der Jugendkultur geworden. Auch der alltägliche Umgang von Jugendlichen mit Geschichte findet zunehmend über diese digitalen Artefakte statt.</p>
+                <p>Insbesondere Memes, die historische Bilder, Akteure oder Symbole des Nationalsozialismus aufgreifen, sind im Netz omnipräsent. Sie bewegen sich in einem hochgradig sensiblen Spannungsfeld zwischen vermeintlich harmlosem „Edgy Humor“, schleichender Trivialisierung historischer Gräueltaten und gezieltem politischem Revisionismus.</p>
+                <p>Diese Handreichung bietet Lehrkräften einen theoriegeleiteten und sicheren Rahmen, um den naiven, affektiven Konsum der Schüler*innen gezielt aufzubrechen. Ziel ist es, historische Urteilskraft und digitale Mündigkeit (Social Media Literacy) zu verbinden.</p>
+            </div>
+
+            <!-- Anmerkungsfeld an der Seite -->
+            <aside class="sidebar">
+                <h4>Aber ich kenne mich mit Memes doch gar nicht aus?</h4>
+                <p>Die Thematisierung von (NS-)Memes erzeugt im Kollegium oft Verunsicherung. Nicht jede Lehrkraft ist originär mit der Internetkultur aufgewachsen oder verfügt über informatikdidaktisches Vorwissen zu Algorithmen.</p>
+                <p><strong>Für diese Handreichung gilt:</strong> Sie benötigen kein IT-Spezialwissen und müssen nicht jeden Internet-Trend kennen.</p>
+                <ul>
+                    <li>Ein <strong>Glossar</strong> (siehe Punkt 5) hilft Ihnen, die zentralen Begriffe schnell zu erfassen.</li>
+                    <li>Bei thematischer Unsicherheit können Sie den Umfang reduzieren: Fokussieren Sie sich auf <strong>nur ein oder zwei ausgewählte Meme-Paare</strong>, die Sie vorab sicher durchdrungen haben.</li>
+                    <li>Der <em>5-Schritte-Leitfaden</em> bietet ein methodisches Gerüst, das die inhaltliche Führung übernimmt.</li>
+                </ul>
+            </aside>
+        </div>
+
+        <h3>2. Antizipierte Lernhürden und didaktische Lösungsansätze (Leitlinien)</h3>
+        <p>Um NS-Memes erfolgreich im Unterricht zu de-konstruieren, müssen die lebensweltlichen Nutzungsgewohnheiten der Schüler*innen berücksichtigt werden. Für jede identifizierte Lernhürde bietet diese Handreichung eine konkrete didaktische Leitlinie als Lösung:</p>
+        <ul>
+            <li><strong>Lernhürde A: Schleichende Normalisierung und Trivialisierung</strong>
+                <br><em>Die Hürde:</em> Durch den flüchtigen Konsum in sozialen Medien werden komplexe historische Zusammenhänge radikal vereinfacht. Die NS-Zeit verkommt zur bloßen Schablone für Witze; Grenzen zwischen Provokation und Ideologie verschwimmen.
+                <br><em>Die Lösung (Leitlinie 1 & 2): Entschleunigung und Multiperspektivität.</em> Der Unterricht durchbricht das schnelle „Scrollen“ durch methodische Verlangsamung. Das verwendete historische Bildmaterial wird bewusst <strong>rekontextualisiert</strong>. Durch die vergleichende Analyse von <strong>Meme-Kontrastpaaren</strong> lernen die Schüler*innen, unterschiedliche Intentionen zu erkennen.
+            </li>
+            <li><strong>Lernhürde B: Soziale Hürde und Identitätsstiftung (Peer-Pressure)</strong>
+                <br><em>Die Hürde:</em> Das Teilen von Memes ist oft ein performativer Akt, um Gruppenzugehörigkeit (In-Group) zu beweisen. Wer Memes im Klassenchat kritisiert, riskiert als „Spaßbremse“ sozialen Statusverlust.
+                <br><em>Die Lösung (Leitlinie 3): Geschützter Reflexionsraum.</em> Moralisierende Belehrungen von oben herab verhärten Abwehrmechanismen. Der Unterricht muss einen bewertungsfreien Raum schaffen, in dem Schüler*innen ihre eigene Rolle reflektieren und Handlungsstrategien gegen Peer-Pressure entwickeln können.
+            </li>
+            <li><strong>Lernhürde C: Illusion von historischem Wissen</strong>
+                <br><em>Die Hürde:</em> Schüler*innen bringen ein visuelles „Popkultur-Archiv“ zur NS-Zeit mit. Werden sie mit differenzierten Fakten konfrontiert, wehren sie diese oft ab (psychologisch begünstigt durch den <em>Confirmation Bias</em>), um ihr etabliertes Weltbild nicht anpassen zu müssen.
+                <br><em>Die Lösung (Leitlinie 4): Förderung epistemischer Neugier.</em> Statt Wissen frontal vorzugeben, decken die Schüler*innen ihre Wissenslücken durch die De-Konstruktionsarbeit selbst auf. Auf Meta-Ebene wird transparent gemacht, wie unser Gehirn auf unbequeme Fakten reagiert.
+            </li>
+            <li><strong>Lernhürde D: Mediale Hürde durch Plattformlogiken (Algorithmizität)</strong>
+                <br><em>Die Hürde:</em> Die Lernenden durchschauen oft nicht, dass Algorithmen extreme, banalisierende Inhalte bevorzugen. Sie nehmen die Plattform fälschlicherweise als neutralen Ort wahr.
+                <br><em>Die Lösung (Leitlinie 5): Thematisierung von Plattformlogiken.</em> Memes werden als sozio-technische Phänomene behandelt. In einem „Social Media Labor“ simulieren die Schüler*innen Algorithmen und erkennen sie als aktive „Mitgestalter“ von trivialisierter Geschichte.
+            </li>
+        </ul>
+
+        <h3>3. Formulierung der Lernziele</h3>
+        <p>Das übergeordnete Richtziel der Einheit lautet: <em>Die Schüler*innen können ein NS-Meme als absichtsvoll konstruiertes, mediales Narrativ de-konstruieren und dessen Orientierungsangebot für ihre eigene digitale Lebenswelt kritisch und reflektiert bewerten.</em></p>
+        <ol>
+            <li><strong>Analytisch-historisches Lernziel (Methodenkompetenz):</strong> Die Schüler*innen können die historische Realität von der popkulturellen Überformung („Edgy Humor“) methodisch unterscheiden (Rekontextualisierung) und die Intentionen dieser Narrative aufdecken.</li>
+            <li><strong>Medienkritik-informatisches Lernziel (Sachkompetenz):</strong> Die Schüler*innen können erklären, inwiefern die Aufmerksamkeitsökonomie sozialer Netzwerke zu einer Verharmlosung und Entkontextualisierung von Geschichte führt.</li>
+            <li><strong>Reflexiv-orientierendes Lernziel (Orientierungskompetenz):</strong> Die Schüler*innen hinterfragen ihr eigenes Weiterleitungsverhalten kritisch, um bewusste Entscheidungen für ihren zukünftigen Umgang mit verzerrenden Inhalten zu treffen.</li>
+        </ol>
+
+        <h3>4. Verlaufsplan (für eine Doppelstunde / ca. 90 Minuten)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phase / Dauer</th>
+                    <th>Handlungsschritte & Einsatz der Materialien</th>
+                    <th>Didaktischer Kommentar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. Einstieg & Sensibilisierung</strong><br><em>(ca. 15 Min.)</em></td>
+                    <td><strong>Impuls:</strong> Die Lehrkraft zeigt ein (harmloses) History-Meme.<br><strong>Diskussion:</strong> <em>Warum lachen wir darüber?</em><br><strong>Problematisierung:</strong> Überleitung zu NS-Memes: <em>Wo verläuft die Grenze zwischen schwarzem Humor und Verharmlosung/Propaganda?</em></td>
+                    <td>Holt die Lernenden in ihrer Lebenswelt ab. Schafft die nötige kognitive Dissonanz (Irritation) als Ausgangspunkt für historisches Denken.</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Analytische De-Konstruktion</strong><br><em>(ca. 30 Min.)</em></td>
+                    <td><strong>Einsatz von Teil 2 (Meme-Paare):</strong><br>Klasse arbeitet in Kleingruppen mit einem Kontrastpaar (Meme A & B) sowie dem 5-Schritte-Leitfaden.<br><strong>Arbeitsphase:</strong> Bewusste Entschleunigung und <em>historische Rekontextualisierung</em> der verwendeten Bilder.<br><strong>Sicherung:</strong> Kurzer Austausch im Plenum.</td>
+                    <td>Bricht die "flüchtigen" Rezeptionsgewohnheiten auf. Das Kontrastpaar macht sichtbar, dass Geschichte im Meme konstruiert wird und unterschiedliche Intentionen verfolgt.</td>
+                </tr>
+                <tr>
+                    <td><strong>3. Macht der Algorithmen</strong><br><em>(ca. 25 Min.)</em></td>
+                    <td><strong>Einsatz von Teil 3 (Social Media Labor):</strong><br>Wechsel zur informationstechnischen Ebene. Die Schüler*innen nutzen das interaktive <em>Social Media Labor</em>.<br><strong>Arbeitsphase:</strong> Sie testen Algorithmen auf sachliche Fakten vs. provokante Memes.</td>
+                    <td>Adressiert Lernhürde D. Die Schüler*innen erkennen die Plattformlogik als "Mitgestalter" von trivialisierter Geschichte, der "Edgy Humor" belohnt.</td>
+                </tr>
+                <tr>
+                    <td><strong>4. Reflexion & Transfer</strong><br><em>(ca. 20 Min.)</em></td>
+                    <td><strong>Einsatz von Teil 4 (Reflexion & Handlungsermächtigung):</strong><br>Input zu Illusion von Wissen, Peer-Pressure, Confirmation Bias.<br><strong>Selbstreflexion (Stillarbeit):</strong> Eigenes Teilungsverhalten überdenken.<br><strong>Abschluss:</strong> Formulierung des <em>Prosumer-Manifests</em>.</td>
+                    <td>Führt zur Historischen Orientierungskompetenz. Aus der fachlichen Analyse wird eine Handlungsmaxime für das eigene Leben abgeleitet.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>5. Glossar: Die Sprache der digitalen Geschichtskultur</h3>
+        <p>Um als Lehrkraft an die Lebenswelt der Schüler*innen anknüpfen zu können, helfen folgende Kernbegriffe:</p>
+        <ul>
+            <li><strong>Meme:</strong> Ein multimodales Artefakt (meist Bild-Text-Kombination), das sich virenartig (<em>viral</em>) im Netz verbreitet. Es greift bestehende Bilder auf und setzt sie durch leichten Umbau oder neuen Text in einen neuen Kontext (<em>Remix/Rekontextualisierung</em>).</li>
+            <li><strong>Edgy Humor:</strong> Eine Kommunikationsform im Netz, die bewusst auf Provokation, schwarzen Humor und Tabubruch (oft mit historischen Gräueltaten) abzielt. Ziel ist meist die Abgrenzung zum Mainstream und der Schockwert.</li>
+            <li><strong>Prosumer:</strong> Ein Kofferwort aus <em>Producer</em> (Produzent) und <em>Consumer</em> (Konsument). Beschreibt die aktive Rolle der Lernenden, die Memes nicht nur betrachten, sondern liken, teilen, verändern und somit selbst digitale Geschichtskultur erschaffen.</li>
+            <li><strong>Template:</strong> Die "Schablone" oder Bildvorlage eines Memes, die als bekannt vorausgesetzt und immer wieder mit neuen Texten gefüllt wird.</li>
+            <li><strong>Reaction-Meme:</strong> Eine spezielle Meme-Gattung, bei der ein (meist popkulturelles) Bild als affektive, emotionale Reaktion auf eine Situation eingesetzt wird (Beispiel: Ein schockierter Captain Kirk stellvertretend für eine historische Person).</li>
+            <li><strong>Aufmerksamkeitsökonomie:</strong> Das Geschäftsmodell sozialer Netzwerke. Algorithmen belohnen Beiträge, die starke Reaktionen (Engagement in Form von Likes, wütenden Kommentaren, langer Verweildauer) hervorrufen, unabhängig von deren Wahrheitsgehalt.</li>
+        </ul>
+    </section>
+
+</div>
+
+</body>
+</html>
