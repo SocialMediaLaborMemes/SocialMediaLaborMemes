@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teil 1 - Handreichung: NS-Memes</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --sidebar-bg: #fffbe6;
+            --sidebar-border: #f1c40f;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            /* Das padding ist jetzt im .container, damit der Header volle Breite hat */
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 20px;
+            color: white;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            header h2 {
+                margin: 0 0 5px 0;
+                font-size: 24px;
+                font-weight: 600;
+                color: white;
+            }
+
+            header h4 {
+                margin: 0;
+                font-size: 15px;
+                font-weight: 300;
+                color: #cbd5e1;
+            }
+
+        .home-btn {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+            .home-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .home-btn img {
+                width: 20px;
+                height: auto;
+                filter: brightness(0) invert(1);
+            }
+
+        /* Auth-Status rechts oben */
+        #auth-status-container {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            font-size: 13px;
+            text-align: right;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ========================================= */
+        /* INHALT DER HANDREICHUNG                   */
+        /* ========================================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px; /* Hier ist jetzt das Padding */
+        }
+
+        .page-title {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        /* --- Einklapp-Funktion (Akkordeon) Styles --- */
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+            outline: none;
+            display: block;
+            -webkit-user-select: none;
+        }
+
+            details > summary::-webkit-details-marker {
+                display: none;
+            }
+
+            details > summary h2, details > summary h3 {
+                position: relative;
+                padding-right: 35px;
+                transition: color 0.2s ease;
+            }
+
+            details > summary:hover h2, details > summary:hover h3 {
+                color: var(--accent-color);
+            }
+
+            details > summary h2::after, details > summary h3::after {
+                content: '▶';
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 0.8em;
+                color: var(--accent-color);
+            }
+
+        details[open] > summary h2::after, details[open] > summary h3::after {
+            content: '▼';
+        }
+
+        details.section-details > summary h2 {
+            margin-bottom: 20px;
+        }
+
+        details.sub-details {
+            margin-top: 30px;
+        }
+
+            details.sub-details:first-child {
+                margin-top: 0;
+            }
+
+            details.sub-details > summary h3 {
+                margin-bottom: 15px;
+            }
+
+        .details-content {
+            animation: fadeInDown 0.3s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Grid & Sidebar --- */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            border-left: 5px solid var(--sidebar-border);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+            .sidebar h4 {
+                margin-top: 0;
+                color: #d35400;
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .sidebar ul {
+                padding-left: 15px;
+                margin-bottom: 0;
+            }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        @media (max-width: 850px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-left: none;
+                border-top: 5px solid var(--sidebar-border);
+                border-radius: 8px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NEU: Globaler Header -->
+    <header>
+        <a href="index.html" class="home-btn" title="Zurück zur Startseite">
+            <img src="img/home.png" alt="Home"> Zurück
+        </a>
+        <h2>Social Media Labor</h2>
+        <div id="auth-status-container">Lädt...</div>
+    </header>
+
+    <div class="container">
+
+        <!-- Alter Titelbereich der Handreichung -->
+        <div class="page-title">
+            <h1>Handreichung: Zwischen ‚Edgy Humor‘ und Revisionismus</h1>
+            <p><strong>NS-Memes im Geschichtsunterricht de-konstruieren</strong></p>
+        </div>
+
+        <section class="card">
+            <details class="section-details" open>
+                <summary><h2>Teil 1: Lehrkräftematerialien (Hintergrund, Lernziele & Verlaufsplan)</h2></summary>
+
+                <div class="details-content">
+                    <div class="intro-grid">
+                        <div class="main-content">
+                            <h3>1. Ziele und didaktischer Rahmen</h3>
+                            <div class="details-content">
+                                <p>Memes – zumeist flüchtige, digitale Bild-Text-Kombinationen, die bekannte Motive und Themen der Popkultur aufgreifen und durch Rekontextualisierung humorvoll oder provokant neu verpacken – sind zur „Lingua Franca“ der Jugendkultur geworden. Auch der alltägliche Umgang von Jugendlichen mit Geschichte findet zunehmend über diese digitalen Artefakte statt.</p>
+                                <p>Insbesondere Memes, die historische Bilder, Akteure oder Symbole des Nationalsozialismus aufgreifen, sind im Netz omnipräsent. Sie bewegen sich in einem hochgradig sensiblen Spannungsfeld zwischen vermeintlich harmlosem „Edgy Humor“, schleichender Trivialisierung historischer Gräueltaten und gezieltem politischem Revisionismus. Gerade die Figur Hitler wird hier oft als Vergleich mit anderen negativ bewerteten Personen oder Eigenschaften verwedet. Diese popkulturelle Version Hitlers unterscheidet sich aber immer von der historischen Figur.</p>
+                                <p>Diese Handreichung bietet Lehrkräften einen theoriegeleiteten und sicheren Rahmen, um den naiven, affektiven Konsum der Schüler*innen gezielt aufzubrechen. Ziel ist es, historische Urteilskraft und digitale Mündigkeit (Social Media Literacy) zu verbinden.</p>
+                            </div>
+                        </div>
+
+                        <!-- Anmerkungsfeld (Sidebar) -->
+                        <aside class="sidebar">
+                            <h4>Aber ich kenne mich mit Memes doch gar nicht aus!</h4>
+                            <p>Die Thematisierung von (NS-)Memes erzeugt oft Verunsicherung. Nicht jede Lehrkraft ist originär mit der Internetkultur aufgewachsen oder verfügt über informatikdidaktisches Vorwissen zu Algorithmen.</p>
+                            <p><strong>Für diese Handreichung gilt:</strong> Sie benötigen kein IT-Spezialwissen und müssen nicht jeden Internet-Trend kennen.</p>
+                            <ul>
+                                <li>Ein <strong>Glossar</strong> (siehe Punkt 5) hilft Ihnen, die zentralen Begriffe schnell zu erfassen.</li>
+                                <li>Bei thematischer Unsicherheit können Sie den Umfang reduzieren: Fokussieren Sie sich auf <strong>nur ein oder zwei ausgewählte Meme-Paare</strong>, die Sie vorab sicher durchdrungen haben.</li>
+                                <li>Der <em>5-Schritte-Leitfaden</em> bietet ein methodisches Gerüst, das die inhaltliche Führung übernimmt.</li>
+                            </ul>
+                        </aside>
+                    </div>
+
+                    <h3>2. Antizipierte Lernhürden und didaktische Lösungsansätze</h3>
+                    <div class="details-content">
+                        <p>Um NS-Memes erfolgreich im Unterricht zu de-konstruieren, müssen die lebensweltlichen Nutzungsgewohnheiten der Schüler*innen berücksichtigt werden. Für jede identifizierte Lernhürde bietet diese Handreichung eine konkrete didaktische Leitlinie als Lösung:</p>
+                        <strong>Lernhürde A: Schleichende Normalisierung und Trivialisierung</strong>
+                        <br>Durch den flüchtigen Konsum in sozialen Medien werden komplexe historische Zusammenhänge radikal vereinfacht. Die NS-Zeit verkommt zur bloßen Schablone für Witze; Grenzen zwischen Provokation und Ideologie verschwimmen.
+                        <ul>
+                            <li>
+                                <p><em>Die Lösung: Entschleunigung und Multiperspektivität:</em> Der Unterricht durchbricht das schnelle „Scrollen“ durch methodische Verlangsamung. Das verwendete historische Bildmaterial wird bewusst <strong>rekontextualisiert</strong>. Durch die vergleichende Analyse von <strong>Meme-Kontrastpaaren</strong> lernen die Schüler*innen, unterschiedliche Intentionen zu erkennen.
+                            </li>
+                        </ul>
+                        <strong>Lernhürde B: Soziale Hürde und Identitätsstiftung (Peer-Pressure)</strong>
+                        <br>Das Teilen von Memes ist oft ein performativer Akt, um Gruppenzugehörigkeit (In-Group) zu beweisen. Wer Memes im Klassenchat kritisiert, riskiert als „Spaßbremse“ sozialen Statusverlust.
+                        <ul>
+                            <li>
+                                <p><em>Die Lösung: Geschützter Reflexionsraum:</em> Moralisierende Belehrungen von oben herab verhärten Abwehrmechanismen. Der Unterricht muss einen bewertungsfreien Raum schaffen, in dem Schüler*innen ihre eigene Rolle reflektieren und Handlungsstrategien gegen Peer-Pressure entwickeln können. </p>
+                            </li>
+                        </ul>
+                        <strong>Lernhürde C: Illusion von historischem Wissen</strong>
+                        <br>Schüler*innen bringen ein visuelles „Popkultur-Archiv“ zur NS-Zeit mit. Werden sie mit differenzierten Fakten konfrontiert, wehren sie diese oft ab (psychologisch begünstigt durch den <em>Confirmation Bias</em>), um ihr etabliertes Weltbild nicht anpassen zu müssen.
+                        <ul>
+                            <li>
+                                <p><em>Die Lösung: Förderung epistemischer Neugier:</em> Statt Wissen frontal vorzugeben, decken die Schüler*innen ihre Wissenslücken durch die De-Konstruktionsarbeit selbst auf. Auf Meta-Ebene wird transparent gemacht, wie unser Gehirn auf unbequeme Fakten reagiert. </p>
+                            </li>
+                        </ul>
+                        <strong>Lernhürde D: Mediale Hürde durch Plattformlogiken (Algorithmizität)</strong>
+                        <br>Die Lernenden durchschauen oft nicht, dass Algorithmen extreme, banalisierende Inhalte bevorzugen. Sie nehmen die Plattform fälschlicherweise als neutralen Ort wahr.
+                        <ul>
+                            <li>
+                                <p><em>Die Lösung: Thematisierung von Plattformlogiken:</em> Memes werden als sozio-technische Phänomene behandelt. In einem „Social Media Labor“ simulieren die Schüler*innen Algorithmen und erkennen sie als aktive „Mitgestalter“ von trivialisierter Geschichte. </p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <h3>3. Lernziele</h3>
+                    <div class="details-content">
+                        <p>Das übergeordnete Richtziel der Einheit lautet: <em>Die Schüler*innen können ein NS-Meme als absichtsvoll konstruiertes, mediales Narrativ de-konstruieren und dessen Orientierungsangebot für ihre eigene digitale Lebenswelt kritisch und reflektiert bewerten.</em></p>
+                        <p>Dies wird erreicht durch eine Förderung einzelner Kompetenzbereiche:</p>
+                        <ol>
+                            <li><strong>Methodenkompetenz:</strong> Die Schüler*innen können die historische Realität von der popkulturellen Überformung („Edgy Humor“) methodisch unterscheiden (Rekontextualisierung) und die Intentionen dieser Narrative aufdecken.</li>
+                            <li><strong>Sachkompetenz:</strong> Die Schüler*innen können erklären, inwiefern die Aufmerksamkeitsökonomie sozialer Netzwerke zu einer Verharmlosung und Entkontextualisierung von Geschichte führt.</li>
+                            <li><strong>Orientierungskompetenz:</strong> Die Schüler*innen hinterfragen ihr eigenes Weiterleitungsverhalten kritisch, um bewusste Entscheidungen für ihren zukünftigen Umgang mit verzerrenden Inhalten zu treffen.</li>
+                        </ol>
+                    </div>
+
+                    <h3>4. Verlaufsplan (für eine Doppelstunde / ca. 90 Minuten)</h3>
+                    <div class="details-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Phase / Dauer</th>
+                                    <th>Handlungsschritte & Einsatz der Materialien</th>
+                                    <th>Didaktischer Kommentar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1. Einstieg & Sensibilisierung</strong><br><em>(ca. 10 Min.)</em></td>
+                                    <td><strong>Impuls:</strong> Die Lehrkraft zeigt ein (harmloses) History-Meme.<br><strong>Diskussion:</strong> <em>Warum lachen wir darüber?</em><br><strong>Problematisierung:</strong> Überleitung zu NS-Memes: <em>Wo verläuft die Grenze zwischen schwarzem Humor und Verharmlosung/Propaganda?</em></td>
+                                    <td>Holt die Lernenden in ihrer Lebenswelt ab. Schafft die nötige kognitive Dissonanz (Irritation) als Ausgangspunkt für historisches Denken.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2. Analytische De-Konstruktion</strong><br><em>(ca. 35 Min.)</em></td>
+                                    <td><strong>Einsatz von Teil 2 (Meme-Paare):</strong><br>Klasse arbeitet in Kleingruppen mit einem Kontrastpaar (Meme A & B) sowie dem 5-Schritte-Leitfaden.<br><strong>Arbeitsphase:</strong> Bewusste Entschleunigung und <em>historische Rekontextualisierung</em> der verwendeten Bilder.<br><strong>Sicherung:</strong> Kurzer Austausch im Plenum.</td>
+                                    <td>Bricht die "flüchtigen" Rezeptionsgewohnheiten auf. Das Kontrastpaar macht sichtbar, dass Geschichte im Meme konstruiert wird und unterschiedliche Intentionen verfolgt.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3. Macht der Algorithmen</strong><br><em>(ca. 25 Min.)</em></td>
+                                    <td><strong>Einsatz von Teil 3 (Social Media Labor):</strong><br>Wechsel zur informationstechnischen Ebene. Die Schüler*innen nutzen das interaktive <em>Social Media Labor</em>.<br><strong>Arbeitsphase:</strong> Sie testen Algorithmen auf sachliche Fakten vs. provokante Memes.</td>
+                                    <td>Adressiert Lernhürde D. Die Schüler*innen erkennen die Plattformlogik als "Mitgestalter" von trivialisierter Geschichte, der "Edgy Humor" belohnt.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4. Reflexion & Transfer</strong><br><em>(ca. 20 Min.)</em></td>
+                                    <td><strong>Einsatz von Teil 4 (Reflexion & Handlungsermächtigung):</strong><br>Input zu Illusion von Wissen, Peer-Pressure, Confirmation Bias.<br><strong>Selbstreflexion (Stillarbeit):</strong> Eigenes Teilungsverhalten überdenken.<br><strong>Abschluss:</strong> Formulierung des <em>Prosumer-Manifests</em>.</td>
+                                    <td>Führt zur Historischen Orientierungskompetenz. Aus der fachlichen Analyse wird eine Handlungsmaxime für das eigene Leben abgeleitet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <details class="section-details" open>
+                        <summary>
+                            <h3>5. Glossar: Die Sprache der digitalen Geschichtskultur</h3>
+                        </summary>
+                        <div class="details-content">
+                            <p>Um als Lehrkraft an die Lebenswelt der Schüler*innen anknüpfen zu können und die Mechanismen radikalisierender digitaler Inhalte zu verstehen, helfen folgende Kernbegriffe:</p>
+                            <ul>
+                                <li><strong>Algorithmus / Algorithmizität:</strong> Die unsichtbaren Regeln sozialer Netzwerke, die entscheiden, welche Inhalte Nutzern angezeigt werden. Sie bevorzugen und belohnen oft extreme, polarisierende oder emotionalisierende Inhalte, da diese Nutzer länger auf der Plattform halten.</li>
+
+                                <li><strong>Aufmerksamkeitsökonomie:</strong> Das Geschäftsmodell sozialer Medien. Sichtbarkeit (Reichweite) ist die eigentliche Währung. Inhalte, die starke Reaktionen (Engagement durch Likes, Shares oder wütende Kommentare) hervorrufen, gewinnen – unabhängig von ihrem historischen Wahrheitsgehalt.</li>
+
+                                <li><strong>Confirmation Bias (Bestätigungsfehler):</strong> Die psychologische Neigung, Informationen so auszuwählen, zu suchen und zu interpretieren, dass sie die eigenen bereits bestehenden Überzeugungen bestätigen. Widersprüchliche historische Fakten werden von Schüler*innen oft unbewusst abgewehrt.</li>
+
+                                <li><strong>Dogwhistling (Hundepfeifen-Rhetorik):</strong> Die Verwendung scheinbar harmloser Wörter, Bilder oder Zahlencodes (z. B. 1488), die von Außenstehenden nicht verstanden oder übersehen werden, aber für Eingeweihte (z. B. Rechtsextreme) eine klare, oft menschenverachtende Botschaft transportieren.</li>
+
+                                <li><strong>Edgy Humor:</strong> Eine Kommunikationsform im Netz, die bewusst auf Provokation, schwarzen Humor und Tabubruch (oft mit historischen Gräueltaten) abzielt. Ziel ist meist die Abgrenzung zum "Mainstream" und das Erzeugen eines Schockwerts.</li>
+
+                                <li><strong>Geschichtsrevisionismus:</strong> Der Versuch, ein historisch und wissenschaftlich anerkanntes Geschichtsbild umzudeuten. Im Kontext von NS-Memes geschieht dies oft schleichend durch die Verharmlosung des Holocausts, die Heroisierung von NS-Tätern oder die Relativierung der Schuldfrage.</li>
+
+                                <li><strong>Irony Poisoning (Ironievergiftung):</strong> Ein Prozess, bei dem Jugendliche durch den ständigen Konsum von extremem, in Ironie verpacktem Humor abstumpfen. Die Grenze zwischen "gespieltem" Rassismus/Antisemitismus für einen Lacher und echten Überzeugungen verschwimmt zunehmend.</li>
+
+                                <li><strong>Meme:</strong> Ein multimodales Artefakt (meist Bild-Text-Kombination), das sich virenartig (<em>viral</em>) im Netz verbreitet. Es greift bestehende Bilder auf und setzt sie durch leichten Umbau oder neuen Text in einen neuen Kontext (<em>Remix/Rekontextualisierung</em>).</li>
+
+                                <li><strong>Plausible Deniability (Glaubhafte Abstreitbarkeit):</strong> Eine zentrale rhetorische Schutzbehauptung in der Meme-Kultur. Wird jemand für das Posten eines NS-Memes kritisiert, kann er sich hinter der Ausrede verstecken: <em>"Das war doch nur ein Witz"</em> oder <em>"Das ist nur schwarzer Humor, du nimmst das zu ernst."</em></li>
+
+                                <li><strong>Prosumer:</strong> Ein Kofferwort aus <em>Producer</em> (Produzent) und <em>Consumer</em> (Konsument). Beschreibt die aktive Rolle der Lernenden, die Memes nicht nur passiv betrachten, sondern liken, teilen, verändern und somit selbst digitale Geschichtskultur erschaffen.</li>
+
+                                <li><strong>Reaction-Meme:</strong> Eine spezielle Meme-Gattung, bei der ein (meist popkulturelles) Bild als affektive, emotionale Reaktion auf eine Situation eingesetzt wird (Beispiel: Ein weinendes Gesicht, das stellvertretend für die Reaktion einer historischen Person auf ein Ereignis steht).</li>
+
+                                <li><strong>Shitposting:</strong> Das massenhafte Posten von absichtlich provokanten, oft absurden oder aggressiven Inhalten mit "geringer Qualität". Es wird oft genutzt, um ernsthafte (historische) Diskussionen zu stören und Grenzen des Sagbaren auszutesten.</li>
+
+                                <li><strong>Template:</strong> Die "Schablone" oder Bildvorlage eines Memes, die als bekannt vorausgesetzt und immer wieder mit neuen Texten gefüllt wird.</li>
+
+                                <li><strong>Whataboutismus:</strong> Eine rhetorische Ablenkungstaktik. Wenn in den Kommentaren eines Memes auf NS-Verbrechen hingewiesen wird, wird das Thema gewechselt (z. B. <em>"Aber was ist mit den alliierten Bombenangriffen?"</em>), um die NS-Taten zu relativieren.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </details>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- HINWEIS FÜR NICHT-EINGELOGGTE -->
+        <!-- ============================================== -->
+        <div id="login-prompt" style="display: none;" class="card">
+            <h2 style="color: #d35400; border-bottom: none;">Geschützter Bereich</h2>
+            <p>Die Unterrichtsmaterialien (Teil 2: De-Konstruktion, Teil 3: Social Media Labor und Teil 4: Reflexion) sind exklusiv für registrierte Lehrkräfte zugänglich.</p>
+            <a href="lehrkraefte_login_or_registration.html" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px;">
+                Jetzt einloggen oder registrieren
+            </a>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- GESCHÜTZTER BEREICH (Wird durch JS gesteuert)  -->
+        <!-- ============================================== -->
+        <div id="restricted-content" style="display: none;">
+
+            <section class="card">
+                <h2>Teil 2: De-Konstruktion von Meme-Paaren</h2>
+                <p>Inhalte zu Teil 2...</p>
+            </section>
+
+            <section class="card">
+                <h2>Teil 3: Das Social Media Labor</h2>
+                <p>Inhalte zu Teil 3...</p>
+            </section>
+
+            <section class="card">
+                <h2>Teil 4: Reflexion und Handlungsermächtigung</h2>
+                <p>Inhalte zu Teil 4...</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Scripte -->
+    <script type="module" src="./auth-status.js"></script>
+</body>
+</html>

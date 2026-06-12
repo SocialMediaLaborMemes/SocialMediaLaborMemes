@@ -138,9 +138,17 @@
             margin-bottom: 20px;
         }
 
-            #generateSessionCodeButton:hover {
-                background-color: var(--primary-blue-hover);
-            }
+        #generateSessionCodeButton:hover {
+            background-color: var(--primary-blue-hover);
+        }
+        #showHandoutButton {
+            background-color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        #showHandoutButton:hover {
+            background-color: var(--primary-blue-hover);
+        }
 
         #joinSessionButton {
             background-color: var(--success-green);
@@ -290,6 +298,16 @@
 
             <!-- Fehlermeldung -->
             <p id="errorMessage" style="display: none;">Fehler bei der Code-Erstellung.</p>
+        </div>
+
+    </div>
+    <div class="main-container">
+
+        <!-- Handreichung-Container -->
+        <div class="card" id="login-container">
+            <p class="card-desc">Hier ist die Handreichung zum Social Media Labor und der gesamten vorgeschlagenen Unterrichtseinheit hinterlegt:</p>
+
+            <button onclick="window.location='./handreichung.html';" id="showHandoutButton">Handreichung anzeigen</button>
         </div>
 
     </div>
