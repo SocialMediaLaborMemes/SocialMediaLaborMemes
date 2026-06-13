@@ -289,6 +289,7 @@
                 padding: 10px;
             }
         }
+
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -315,6 +316,35 @@
             color: #666;
             margin-top: 5px;
             display: block;
+        }
+        .meme-pair-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Zwei gleich große Spalten */
+            gap: 20px; /* Abstand zwischen den Bildern */
+            margin: 15px 0 25px 0;
+            background-color: #f8f9fa;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            align-items: center; /* Zentriert die Bilder vertikal, falls sie unterschiedlich hoch sind */
+        }
+
+        .meme-image-wrapper {
+            text-align: center; /* Zentriert die Bilder horizontal */
+        }
+
+            .meme-image-wrapper img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 4px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* Leichter, moderner  */
+            }
+
+        /* Auf kleinen Bildschirmen (Handy) werden die Bilder untereinander angezeigt */
+        @media (max-width: 650px) {
+            .meme-pair-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -527,7 +557,8 @@
                                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                                     Arbeitsblatt Gruppe A
                                 </a>
-                                <span class="download-info">PDF, 250 KB</span>
+                                <span class="download-info">inklusive Aufgaben Phase 2 & 3</span>
+                                <span class="download-info">PDF, 270 KB</span>
                             </div>
 
                             <!-- Download Button 2 -->
@@ -536,7 +567,17 @@
                                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                                     Arbeitsblatt Gruppe B
                                 </a>
+                                <span class="download-info">inklusive Aufgaben Phase 2 & 3</span>
                                 <span class="download-info">PDF, 270 KB</span>
+                            </div>
+                            <!-- Download Button 3 -->
+                            <div>
+                                <a href="./material/Meme_Paare.pdf" download="Meme-Paare.pdf" class="download-btn">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    Meme Paare
+                                </a>
+                                <span class="download-info">inklusive didakt. Hinweise</span>
+                                <span class="download-info">PDF, 4 MB</span>
                             </div>
 
                         </div>
@@ -743,6 +784,93 @@
                         </div>
                     </details>
 
+                    <!-- Material 4: Didaktische Hinweise (Lehrkräfte) -->
+                    <details class="sub-details">
+                        <summary><h3 style="display:inline-block; margin-bottom:0; font-size: 1.1em; color: var(--secondary-color);">📄 Material 4: Didaktische Hinweise zu den Meme-Paaren (Für Lehrkräfte)</h3></summary>
+                        <div class="details-content" style="margin-top: 15px; margin-bottom: 20px; background-color: #fff; padding: 20px; border: 1px solid var(--border-color);">
+                            <p>Die vier ausgewählten Meme-Paare auf dem Arbeitsblatt decken gezielt eine Bandbreite der digitalen Geschichtskultur ab. Sie veranschaulichen die geschichtsdidaktischen und medienwissenschaftlichen Konzepte der Banalisierung, der Instrumentalisierung, der popkulturellen Umcodierung sowie der <em>Plausible Deniability</em> (glaubhafte Abstreitbarkeit).</p>
+
+                            <h4 style="color: var(--primary-color); margin-top: 20px;">Paar 1: Anne Frank ("Hide and Seek") vs. Kunstschule (Hitlers Ablehnung)</h4>
+                            <p><em>Fokus: Die Asymmetrie des Humors – Opferverhöhnung vs. Täterverharmlosung</em></p>
+                            <div class="meme-pair-container">
+                                <div class="meme-image-wrapper">
+                                    <!-- Linkes Meme -->
+                                    <img src="img/memes/meme1_anne_frank.PNG" alt="Anne Frank">
+                                </div>
+                                <div class="meme-image-wrapper">
+                                    <!-- Rechtes Meme -->
+                                    <img src="img/memes/meme2_kunst.PNG" alt="Kunst">
+                                </div>
+                            </div>
+                            <ul>
+                                <li><strong>Der zentrale Kontrast (Worüber wird sich lustig gemacht?):</strong> Dieses Paar eignet sich hervorragend, um die moralische Dissonanz von NS-Memes zu dekonstruieren. Bei Anne Frank wird das reale, existenzielle Leiden, die Todesangst und die systematische Ermordung eines jüdischen Opfers zynisch auf ein profanes Kinderspiel ("Verstecken") herunterskaliert. Demgegenüber steht das Hitler-Meme: Hier wird nicht auf die von ihm zu verantwortenden Menschheitsverbrechen fokussiert, sondern auf eine banale persönliche Kränkung in seiner Jugend (die Ablehnung an der Kunsthochschule). Tätergeschichte wird zu einer harmlosen, fast schon sympathischen Anekdote, während Opfergeschichte für maximalen Schockwert missbraucht wird.</li>
+                                <li><strong>Linkes Meme (Anne Frank):</strong> Dies ist ein Paradebeispiel für Banalisierung durch "Edgy Humor". Der historische Kontext wird komplett entleert, um eine extreme Grenzüberschreitung zu inszenieren. Die Gefahr liegt hier in der emotionalen Abstumpfung und dem Empathieverlust: Die Schüler*innen konsumieren das absolute Grauen als schnelles Entertainment.</li>
+                                <li><strong>Rechtes Meme (Kunst vor/nach dem 2. WK):</strong> Dieses Meme arbeitet mit einer falschen historischen Kausalität (Teleologie). Der Witz impliziert einen zwangsläufigen, monokausalen Zusammenhang: Weil Hitler an der Kunsthochschule abgelehnt wurde, passierte der Zweite Weltkrieg. Um das heute zu verhindern, ließen Kunsthochschulen "jeden zu" (was gleichzeitig als Spitze gegen moderne Kunst fungiert). Die hochkomplexen gesellschaftlichen, politischen und ideologischen Ursachen des Nationalsozialismus werden auf eine einzige, völlig triviale Ursache-Wirkungs-Kette reduziert.</li>
+                            </ul>
+
+                            <h4 style="color: var(--primary-color); margin-top: 20px;">Paar 2: Biden/Hitler-Vergleich vs. "Cooking Lessons with Hitler"</h4>
+                            <p><em>Fokus: Politische Instrumentalisierung vs. getarnter Rechtsextremismus</em></p>
+                            <div class="meme-pair-container">
+                                <div class="meme-image-wrapper">
+                                    <!-- Linkes Meme -->
+                                    <img src="img/memes/meme3_biden.PNG" alt="Biden">
+                                </div>
+                                <div class="meme-image-wrapper">
+                                    <!-- Rechtes Meme -->
+                                    <img src="img/memes/meme4_cooking_with_hitler.PNG" alt="Cooking with Hitler">
+                                </div>
+                            </div>
+                            <ul>
+                                <li><strong>Linkes Meme (Leaders who arrest opponents):</strong> Dieses Bild zeigt auf, wie der Nationalsozialismus heute oft funktioniert: <strong>Hitler dient als völlig entleerte Schablone für das ultimative Böse.</strong> Es geht hier nicht um eine historische Auseinandersetzung mit dem NS-Regime, sondern um die maximale Delegitimierung eines politischen Gegners in der Gegenwart (Joe Biden). Durch die visuelle Parallelisierung (falsche Dichotomie) wird ein demokratischer Politiker mit diktatorischen Massenmördern auf eine Stufe gestellt. Dies ist das visuelle Äquivalent zu <em>Godwin’s Law</em> (je länger eine Internetdiskussion dauert, desto wahrscheinlicher wird ein Hitler-Vergleich). Der historische Hitler verblasst hinter seiner Funktion als bloßes affektives Werkzeug für aktuelle Desinformation und Polarisierung.</li>
+                                <li><strong>Rechtes Meme (Cooking Lessons):</strong> Hier zeigt sich die hochgefährliche Methode der <em>Plausible Deniability</em> (glaubhafte Abstreitbarkeit). Der systematische, fabrikmäßige Massenmord an Jüdinnen und Juden in Gaskammern wird als "Kochrezept-Witz" maskiert. Wenn Rechtsextreme derartige Memes verbreiten, nutzen sie den Deckmantel des "schwarzen Humors", um Algorithmen und Content-Moderation zu umgehen und ihre Ideologie anschlussfähig für Jugendliche zu machen. Wer sich darüber empört, wird mit dem Satz "Das ist doch nur ein Witz" als humorlos abgetan. Es ist wichtig, mit den Schüler*innen herauszuarbeiten, dass dies handfester, antisemitischer Hass ist, der sich lediglich des Meme-Formats bedient.</li>
+                            </ul>
+
+                            <h4 style="color: var(--primary-color); margin-top: 20px;">Paar 3: Polen-Überfall (Captain Kirk) vs. Fahrerlaubnis/Führerschein</h4>
+                            <p><em>Fokus: "Insider-Wissen" (In-Group-Distinktion) vs. Popkulturelle Umcodierung ("Cutifizierung")</em></p>
+                            <div class="meme-pair-container">
+                                <div class="meme-image-wrapper">
+                                    <!-- Linkes Meme -->
+                                    <img src="img/memes/meme5_poland.PNG" alt="Überfall auf Polen">
+                                </div>
+                                <div class="meme-image-wrapper">
+                                    <!-- Rechtes Meme -->
+                                    <img src="img/memes/meme6_fuehrerschein.PNG" alt="Führerschein">
+                                </div>
+                            </div>
+                            <ul>
+                                <li><strong>Linkes Meme (Poland attacks Germany):</strong> Dieses "Reaction-Meme" thematisiert den von der SS fingierten Überfall auf den Sender Gleiwitz am 31. August 1939. Das Meme zielt auf die Demonstration von <em>Insider-Wissen</em> ab. Wer den historischen Code entschlüsselt, beweist Diskurssicherheit und Zugehörigkeit zu einer "In-Group". Die mediale Logik bricht hierbei einen welthistorischen Makro-Prozess (den Beginn des Zweiten Weltkriegs) auf eine zwischenmenschliche Mikro-Interaktion (gespielte Überraschung) herunter. <strong>Die Gefahr:</strong> Für Rezipient*innen ohne dieses historische Fachwissen steht der Text "Poland attacks Germany" unkommentiert im Raum. Es besteht das akute Risiko eines revisionistischen Missverständnisses, da der Kontext der NS-Propagandalüge durch die drastische Verkürzung des Memes verloren geht.</li>
+                                <li><strong>Rechtes Meme (Führerschein):</strong> Das Meme nutzt eine visuelle "Entweder-Oder"-Schablone (ähnlich dem Drake-Template) und reduziert Adolf Hitler auf einen platten, sprachlichen Wortwitz ("Fahrerlaubnis" vs. "Führer-schein"). Dies illustriert die vollständige Entkopplung der historischen Figur von ihren Taten. Hitler wird "cutifiziert" (verniedlicht) und zu einem harmlosen, apolitischen "Popkultur-Hitler" degradiert, der als Requisit für einen Alltags-Scherz dient. Die Gefahr liegt hier in der völligen Trivialisierung: Man lacht <em>mit</em> der Bildschablone Hitler über ein profanes Wortspiel.</li>
+                            </ul>
+
+                            <h4 style="color: var(--primary-color); margin-top: 20px;">Paar 4: Fake-Trump-Hitler vs. Elon Musk ("How times have changed")</h4>
+                            <p><em>Fokus: Postfaktische Bildmanipulation vs. Algorithmische Normalisierung durch Reichweite</em></p>
+                            <div class="meme-pair-container">
+                                <div class="meme-image-wrapper">
+                                    <!-- Linkes Meme -->
+                                    <img src="img/memes/meme7_trump_hitler.PNG" alt="Trump Hitler">
+                                </div>
+                                <div class="meme-image-wrapper">
+                                    <!-- Rechtes Meme -->
+                                    <img src="img/memes/meme8_musk.PNG" alt="Musk">
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <strong>Linkes Meme (Trump/Hitler Fake):</strong> Ein drastisches Beispiel für postfaktische Geschichtsaneignung und visuelle Desinformation. Dem authentischen Pressefoto von Donald Trump nach dem Attentatsversuch 2024 wird ein vermeintlich historisches Hitler-Foto gegenübergestellt. <strong>Das Bild rechts ist jedoch eine gezielte Manipulation / ein KI-Fake</strong>, das aus verschiedenen Bildelementen so zusammengebaut wurde, dass Pose und Komposition exakt übereinstimmen. Die Geschichte wird hier buchstäblich gefälscht, um eine verschwörungsideologische Erzählung zu stützen (z. B. die Behauptung, das Attentat sei eine "False-Flag"-Operation, genau wie NS-Propaganda).
+                                    <ul>
+                                        <li>
+                                            <em>Hinweis für die Lehrkraft: Lösen Sie diese Fälschung im Unterricht zwingend auf. Nutzen Sie dafür folgende Links zum AFP-Factcheck:</em>
+                                            <ul>
+                                                <li><a href="https://factcheck.afp.com/doc.afp.com.36988K8" target="_blank" rel="noopener noreferrer">https://factcheck.afp.com/doc.afp.com.36988K8</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><strong>Rechtes Meme (Elon Musk Tweet):</strong> Dieses Meme zeigt einen Soldaten der Wehrmacht (oder des Ersten Weltkriegs) mit einem Tragegestell für Brieftauben. Der Text "3 unread messages" übersetzt dies in eine moderne, alltägliche Smartphone-Situation. Brisant wird dies durch den Zirkulationskontext: Gepostet von Elon Musk, erreicht dieses Meme Millionen von Feeds. Die Gefahr besteht in der schleichenden Normalisierung: Wenn Akteure mit extremer Reichweite militärische oder NS-nahe Ikonografie als harmlose, unpolitische Metapher für den Alltag ("Relatable-Meme") verwenden, gewöhnen sich insbesondere junge User unbewusst an diese Ästhetik. Der kritische Filter gegenüber historischen Uniformen und Kontexten geht durch die millionenfache, beiläufige Reproduktion verloren.</li>
+                            </ul>
+                        </div>
+                    </details>
+
                     <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 30px 0;">
 
                     <!-- ABLAUF PHASE 1-3 TEXTE (Nach den Materialien) -->
@@ -851,20 +979,207 @@
             </details>
         </section>
 
-            <section class="card">
-                <h2>Teil 3: Das Social Media Labor</h2>
-                <p>Inhalte zu Teil 3...</p>
-            </section>
+        <!-- ============================================== -->
+        <!-- TEIL 3: SOCIAL MEDIA LABOR                     -->
+        <!-- ============================================== -->
+        <!-- ============================================== -->
+        <!-- TEIL 3: SOCIAL MEDIA LABOR                     -->
+        <!-- ============================================== -->
+        <section class="card">
+            <details class="section-details" open>
+                <summary><h2>Teil 3: Das Social Media Labor (Plattformlogiken)</h2></summary>
+                <div class="details-content">
 
-            <section class="card">
-                <h2>Teil 4: Reflexion und Handlungsermächtigung</h2>
-                <p>Inhalte zu Teil 4...</p>
-            </section>
+                    <h3 style="margin-bottom: 15px;">Unterrichtsmaterialien (Kopiervorlagen)</h3>
+                    <div style="background-color: #f8f9fa; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+                        <h3 style="margin-top: 0; color: var(--primary-color);">Download als PDF</h3>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                            <!-- Download Button -->
+                            <div>
+                                <a href="./material/Social_Media_Labor_Einstieg.pdf" download="Social_Media_Labor_Einstieg.pdf" class="download-btn">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    Social Media Labor: Einstieg
+                                </a>
+                                <span class="download-info">PDF, 100 KB</span>
+                            </div>
+                        </div>
+                    </div>
 
-        </div>
+                    <!-- Material 5: Einstieg Social Media Labor -->
+                    <details class="sub-details">
+                        <summary><h3 style="display:inline-block; margin-bottom:0; font-size: 1.1em; color: var(--secondary-color);">📄 Material 5: Einstieg Social Media Labor</h3></summary>
+                        <div class="details-content" style="margin-top: 15px; margin-bottom: 20px; background-color: #fff; padding: 20px; border: 1px solid var(--border-color);">
+
+                            <h2 style="text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; color: #000;">Social Media Labor</h2>
+
+                            <div style="border: 2px solid #333; padding: 15px; margin-bottom: 20px;">
+                                <strong>Aufgabe:</strong><br>
+                                Entwickle einen Leitfaden / eine Anleitung, wie man vorgehen könnte, wenn einem ein historisches Meme mit NS-Bezug vorgeschlagen wird.
+                            </div>
+
+                            <div style="border: 1px solid #ccc; display: flex; flex-wrap: wrap;">
+                                <div style="background-color: #f1f5f9; padding: 10px; width: 100%; border-bottom: 1px solid #ccc;">
+                                    <strong>Leitfaden</strong>
+                                </div>
+                                <div style="flex: 1; padding: 20px; border-right: 1px solid #ccc; min-width: 250px;">
+                                    <p>Wie könnte man vorgehen, wenn einem ein historisches Meme mit NS-Bezug vorgeschlagen wird?</p>
+                                    <ul>
+                                        <li>Worauf muss man achten?</li>
+                                        <li>Wie verhält man sich?</li>
+                                        <li>Welche Handlungsoptionen hat man?</li>
+                                    </ul>
+                                    <p><strong>Entwickelt einen Schritt für Schritt Leitfaden.</strong></p>
+                                </div>
+                                <div style="flex: 1; padding: 20px; text-align: center; min-width: 250px;">
+                                    <p style="color: #666; font-size: 0.9em; margin-bottom: 10px;"><em>Beispielstruktur (Entscheidungsbaum):</em></p>
+                                    <img src="img/pizza_flowchart.PNG" alt="Pizza Flowchart" style="max-width: 100%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">Didaktischer Ablauf (Einstieg)</h3>
+
+                    <div style="background-color: #ffffff; border-left: 4px solid var(--primary-color); padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <p style="margin-top: 0;">
+                            <strong>Was tun die Schüler*innen?</strong><br>
+                            Als Vorbereitung auf das Thema "Plattformlogiken" entwickeln die Gruppen auf Basis ihrer bisherigen Erkenntnisse (aus Phase 2) einen ersten, visuellen Handlungsleitfaden (z.B. als Flowchart). Die Pizza-Grafik dient als strukturelles Gerüst (Scaffolding).
+                        </p>
+                    </div>
+
+                    <div style="background-color: #e8f4f8; border-radius: 4px; padding: 15px; font-size: 0.95em; margin-bottom: 30px;">
+                        <strong>💡 Warum tun sie das? (Didaktischer Hintergrund):</strong>
+                        <ul style="margin-top: 8px; margin-bottom: 0;">
+                            <li><strong>Öffnung der medienkritischen Ebene:</strong> Memes existieren nicht im luftleeren Raum, sondern sind untrennbar mit den Logiken sozialer Netzwerke (Algorithmen, Aufmerksamkeitsökonomie) verbunden. Um diese Ebene zu öffnen, entwickeln die Schüler*innen zunächst einen rein intuitiven Handlungsleitfaden.</li>
+                            <li><strong>Aufdecken von Handlungslücken:</strong> Die Lernenden werden bei diesem ersten Entwurf voraussichtlich primär die inhaltlichen Erkenntnisse aus Phase 2 (Ideologie, historischer Kern) nutzen. Die medialen Mechanismen (z. B. <em>"Wenn ich wütend kommentiere, pushe ich das Meme im Algorithmus"</em>) fehlen meist noch.</li>
+                            <li><strong>Schaffung eines Lernbedürfnisses:</strong> Genau diese Lücke wird im darauffolgenden <em>Social Media Labor</em> geschlossen. Der erste, unvollständige Leitfaden dient als Grundlage, um die eigenen Strategien später (in Phase 4) kritisch und zielgerichtet zu überarbeiten.</li>
+                        </ul>
+                    </div>
+
+                    <!-- PLATZHALTER FÜR DAS HAUPT-LABOR -->
+                    <div style="margin-top: 40px; padding: 30px; text-align: center; background-color: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 8px;">
+                        <h3 style="color: var(--secondary-color); margin-top: 0;">[Platzhalter: Hauptteil Social Media Labor]</h3>
+                        <p style="color: #64748b; margin-bottom: 0;">Hier folgt im späteren Verlauf die Simulation / Erarbeitung zu Algorithmizität, Aufmerksamkeitsökonomie und Filterblasen.</p>
+                    </div>
+
+                </div>
+            </details>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- TEIL 4: REFLEXION & HANDRUNGSERMÄCHTIGUNG      -->
+        <!-- ============================================== -->
+        <section class="card">
+            <details class="section-details" open>
+                <summary><h2>Teil 4: Reflexion und Handlungsermächtigung</h2></summary>
+                <div class="details-content">
+
+                    <!-- Lehrerinformation -->
+                    <div style="background-color: var(--sidebar-bg); border-left: 5px solid var(--sidebar-border); padding: 20px; border-radius: 4px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                        <h4 style="margin-top: 0; color: #d35400; font-size: 1.1rem; margin-bottom: 10px;">Anmerkungen für Lehrkräfte: T-P-S und Überarbeitung</h4>
+                        <p style="margin-bottom: 10px;">In dieser finalen Phase werden die Erkenntnisse aus Inhaltsanalyse (Teil 2) und Plattformlogiken (Teil 3) zusammengeführt. Die Schüler*innen überprüfen ihren anfänglichen Leitfaden auf "unerwünschte Wirkungen" (z.B. dass wütendes Kommentieren eines rechten Memes dessen Reichweite erhöht).</p>
+                        <p style="margin-bottom: 0;">Dabei kommt die <strong>Think-Pair-Share (T-P-S) Methode</strong> zum Einsatz. Eigene Überlegungen werden zuerst leise durchdacht, dann mit dem Partner besprochen und schließlich im Plenum verhandelt. Die anschließende Überarbeitung des Leitfadens ist das greifbare, lebensweltorientierte Endprodukt (Historische Orientierungskompetenz).</p>
+                    </div>
+
+                    <h3 style="margin-bottom: 15px;">Unterrichtsmaterialien (Kopiervorlagen)</h3>
+                    <div style="background-color: #f8f9fa; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+                        <h3 style="margin-top: 0; color: var(--primary-color);">Download als PDF</h3>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                            <!-- Download Button -->
+                            <div>
+                                <a href="./material/Reflexion_Arbeitsblatt.pdf" download="Reflexion_Arbeitsblatt.pdf" class="download-btn">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    Reflexion & Überarbeitung
+                                </a>
+                                <span class="download-info">PDF, 100 KB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Material 6: Reflexion -->
+                    <details class="sub-details">
+                        <summary><h3 style="display:inline-block; margin-bottom:0; font-size: 1.1em; color: var(--secondary-color);">📄 Material 6: Reflexion & Überarbeitung des Leitfadens</h3></summary>
+                        <div class="details-content" style="margin-top: 15px; margin-bottom: 20px; background-color: #fff; padding: 20px; border: 1px solid var(--border-color);">
+
+                            <h2 style="text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; color: #000;">Reflexion</h2>
+
+                            <div style="border: 2px solid #333; padding: 15px; margin-bottom: 20px;">
+                                <strong>Aufgabe:</strong><br>
+                                <ol style="margin-bottom: 0;">
+                                    <li>Betrachtet die Leitfäden eurer Gruppe: Inwiefern können einzelne Aktionen auch unerwünschte Wirkungen haben? <strong>(Think-Pair-Share)</strong></li>
+                                    <li>Überarbeitet eure Leitfäden noch mal mit Hinblick auf sowohl die Plattformlogiken als auch die Ergebnisse der ersten Arbeitsphase.</li>
+                                </ol>
+                            </div>
+
+                            <div style="border: 1px solid #ccc; display: flex; flex-wrap: wrap;">
+                                <div style="background-color: #f1f5f9; padding: 10px; width: 100%; border-bottom: 1px solid #ccc;">
+                                    <strong>Leitfaden (Version 2.0)</strong>
+                                </div>
+                                <div style="flex: 1; padding: 20px; border-right: 1px solid #ccc; min-width: 250px;">
+                                    <p>Wie könnte man vorgehen, wenn einem ein historisches Meme mit NS-Bezug vorgeschlagen wird?</p>
+                                    <ul>
+                                        <li>Worauf muss man achten?</li>
+                                        <li>Wie verhält man sich?</li>
+                                        <li>Welche Handlungsoptionen hat man?</li>
+                                    </ul>
+                                    <p><strong>Entwickelt einen Schritt für Schritt Leitfaden.</strong></p>
+                                    <div style="margin-top: 30px; border-top: 1px dashed #999; padding-top: 10px; color: var(--accent-color);">
+                                        <strong>Tipp für das Update:</strong><br>
+                                        Bedenkt, was passiert, wenn ihr ein Meme aus Empörung teilt oder wütend kommentiert. Wie reagiert der Algorithmus darauf? Was ist der Unterschied zwischen einem Meme im Gruppenchat und einem Meme im öffentlichen Feed?
+                                    </div>
+                                </div>
+                                <div style="flex: 1; padding: 20px; text-align: center; min-width: 250px;">
+                                    <!-- Platzhalter für das Pizza-Flowchart Bild aus dem PDF -->
+                                    <div style="border: 1px dashed #999; height: 100%; min-height: 250px; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9; color: #666;">
+                                        [Hier entsteht euer überarbeiteter Flowchart / Entscheidungsbaum]
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </details>
+
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">Didaktischer Ablauf und Aufgabenerläuterung</h3>
+
+                    <div style="background-color: #ffffff; border-left: 4px solid var(--primary-color); padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <p style="margin-top: 0;">
+                            <strong>Was tun die Schüler*innen?</strong><br>
+                            Die Lernenden holen ihren ersten Entwurf aus Phase 3 hervor. In der <strong>Think-Pair-Share Phase</strong> reflektieren sie zunächst einzeln (Think), dann zu zweit (Pair) und schließlich im Plenum (Share), wo die Tücken gut gemeinter Reaktionen liegen (z. B. <em>"Wenn ich schreibe 'Das ist unlustig und Nazi-Propaganda', denkt der Algorithmus trotzdem: Cool, viel Engagement, ich zeige das noch mehr Leuten"</em>). In der "Share"-Phase wird empfohlen sehr stark auf die Vorschläge der einzlnen SuS einzugehen, sodass sie eine aktive Rolle in der Diskussion und damit der Entwicklung ihrer Orientierungskompetenz einnehmen. Nur so können dann im letzten Schritt auch alltagswirksame Produkte entstehen.<br>
+                            Abschließend zeichnen/schreiben sie einen fundierten <strong>Leitfaden (Version 2.0)</strong>, der die analytischen Erkenntnisse (Ideologie erkennen) mit der digitalen Mündigkeit (Algorithmen nicht füttern, stattdessen Melden oder Melden & Blockieren) vereint.
+                        </p>
+                    </div>
+
+                    <div style="background-color: #e8f4f8; border-radius: 4px; padding: 15px; font-size: 0.95em;">
+                        <strong>💡 Warum tun sie das? (Didaktischer Hintergrund):</strong>
+                        <ul style="margin-top: 8px; margin-bottom: 0;">
+                            <li><strong>Historische Orientierungskompetenz:</strong> Die analytische De-Konstruktion aus Phase 2 bleibt wertlos, wenn sie nicht zu einer Verhaltensänderung führt. Hier wird historisches Denken lebensweltlich wirksam.</li>
+                            <li><strong>Überwindung sozialer Hürden (Peer-Pressure):</strong> Indem die Schüler*innen Handlungsoptionen (z. B. "Wie reagiere ich im Klassenchat?") objektiv in einem Flowchart durchspielen, entkoppeln sie die Situation von persönlicher Scham. Sie entwickeln sichere Skripte für den Ernstfall.</li>
+                            <li><strong>Vom Consumer zum Prosumer:</strong> Sie begreifen, dass sie durch ihr Handeln (Liken, Teilen, Ignorieren, Melden) die digitale Geschichtskultur aktiv mitgestalten.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </details>
+        </section>
+
+    </div>
     </div>
 
     <!-- Scripte -->
     <script type="module" src="./auth-status.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lese den URL-Parameter 'ref' aus (z.B. ?ref=create_session.html)
+            const params = new URLSearchParams(window.location.search);
+            const refPage = params.get('ref');
+            const backBtn = document.querySelector('.home-btn');
+
+            // Wenn ein Ursprungs-Parameter existiert (und es aus Sicherheitsgründen kein externer Link ist)
+            if (refPage && !refPage.startsWith('http')) {
+                backBtn.href = refPage;           // Ändert das Ziel des Buttons
+                backBtn.title = "Zurück";         // Passt den Hover-Text an
+            }
+        });
+    </script>
 </body>
 </html>

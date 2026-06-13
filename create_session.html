@@ -261,6 +261,26 @@
                 transform: translateY(0);
             }
         }
+        .btn-link {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+            .btn-link:hover {
+                background-color: var(--primary-blue-hover);
+            }
     </style>
 </head>
 <body>
@@ -303,11 +323,12 @@
     </div>
     <div class="main-container">
 
-        <!-- Handreichung-Container -->
-        <div class="card" id="login-container">
+        <!-- Handreichung-Container (ID geändert auf handout-container) -->
+        <div class="card" id="handout-container">
             <p class="card-desc">Hier ist die Handreichung zum Social Media Labor und der gesamten vorgeschlagenen Unterrichtseinheit hinterlegt:</p>
 
-            <button onclick="window.location='./handreichung.html';" id="showHandoutButton">Handreichung anzeigen</button>
+            <!-- Aus <button> wird ein echtes <a> Tag mit dem ref-Parameter -->
+            <a href="handreichung.html?ref=create_session.html"  class="btn-link">Handreichung anzeigen</a>
         </div>
 
     </div>
